@@ -11,7 +11,7 @@ ip address দুই ধরণের হতে পারে। যথাঃ IPV4
 প্রতিটি ip address কেই একটি নির্দিষ্ট নিয়মে ভাগ করা যায়। একে বলা হয়, netowrk part এবং host part. 
 আপনার নেটওয়ার্কে দুইটি ip address কে আপনি কখনই নিজের জন্য ব্যবহার করতে পারবেন না। তার মধ্যে প্রথম ip address টি। `192.168.1.0` - কারণঃ শুরুর ip address টি network ip address এবং অন্যটি হলোঃ `192.168.1.255` - শেষের ip address. শেষের ip address টিকে বলা হয়ঃ brodcast ip address.
 
-প্রথম্ন যখন internet শুরু হয়, তখন যারা networking এর কাজ করেছেন, তারা ip address কে চার ভাগে ভাগ করেন। যেমন এখনও দেখা যাচ্ছেঃ `0-255 . 0-255 . 0-255 . 0-255` অর্থ্যাত প্রতিটি ভাগে শূন্য থেকে দুইশন পঞ্চান্ন পর্যন্ত ip address রাখা যাবে। মানে প্রতিটি ঘরে ২৫৬ টি করে ip address রাখা যাচ্ছে। তাহলে, total ip address দাঁড়াচ্ছেঃ 2^32 = 4,294,967,296 টি ip address.
+প্রথম্ন যখন internet শুরু হয়, তখন যারা networking এর কাজ করেছেন, তারা ip address কে চার ভাগে ভাগ করেন। যেমন এখনও দেখা যাচ্ছেঃ `0-255 . 0-255 . 0-255 . 0-255` অর্থ্যাত প্রতিটি ভাগে শূন্য থেকে দুইশন পঞ্চান্ন পর্যন্ত ip address রাখা যাবে। মানে প্রতিটি ঘরে ২৫৬ টি করে ip address রাখা যাচ্ছে। তাহলে, total ip address দাঁড়াচ্ছেঃ 2<sup>32</sup> = 4,294,967,296 টি ip address.
 সমস্ত ip address কে বেশ কয়েকটি ভাগে ভাগ করে দেয়া হয়। চার্টটি দেখতে হবেঃ
 
 | Class | IP Range | Default Subnet Mask |
@@ -22,7 +22,8 @@ ip address দুই ধরণের হতে পারে। যথাঃ IPV4
 | D | `224.0.0.0` - `239.255.255.255`| multi-cast |
 | E | `240.0.0.0` - `255.255.255.255`| experimental |
 
-এই চার্টে দেখানো নিয়ম অনুযায়ী প্রত্যেকটি ip address এর পাশাপাশি তাদের subnet mask ও দেয়া হয়। এই subnet mask এর দিকে তাকালে দেখা যায়, A Class IP Address এর Default Subnet Mask হয় `255.0.0.0`। এর অর্থ হলোঃ যদি কোনো ip address এর subnet mask হিসেবে default subnet mask ব্যবহার করা হয়, তাহলে, subnet mask এর যেই ঘরগুলোতে `0` দেয়া আছে, সেই ঘর গুলোতে চাইলে, ip address assign করা যায়।
-যেমনঃ যদি `10.20.1.12` ip address কাওকে দেয়া হয়, এবং তার default subnet mask হিসেবে, `255.0.0.0` দেয়া হয়, তাহলে, সে তার একটি ip address কে ভাগ করে করে subnet এর প্রতিটি শূন্য এর যায়গায় ২৫৫ পর্যন্ত ভাগ করে নিয়ে, প্রতিটির জন্য ip address assign করতে পারে। যদি `255.0.10.2` এই রকম ব্যবহার করে থাকে, তাহলে সেইটাকে বলে, classless ip. 
+- এই চার্টে দেখানো নিয়ম অনুযায়ী প্রত্যেকটি ip address এর পাশাপাশি তাদের subnet mask ও দেয়া হয়। এই subnet mask এর দিকে তাকালে দেখা যায়, A Class IP Address এর Default Subnet Mask হয় `255.0.0.0`। এর অর্থ হলোঃ যদি কোনো ip address এর subnet mask হিসেবে default subnet mask ব্যবহার করা হয়, তাহলে, subnet mask এর যেই ঘরগুলোতে `0` দেয়া আছে, সেই ঘর গুলোতে চাইলে, ip address assign করা যায়।
+যেমনঃ যদি `10.20.1.12` ip address কাওকে দেয়া হয়, এবং তার default subnet mask হিসেবে, `255.0.0.0` দেয়া হয়, তাহলে, সে তার একটি ip address কে ভাগ করে করে subnet এর প্রতিটি শূন্য এর যায়গায় ২৫৫ পর্যন্ত ভাগ করে নিয়ে, প্রতিটির জন্য ip address assign করতে পারে। যদি `255.0.10.2` এই রকম ব্যবহার করে থাকে, তাহলে সেইটাকে বলে, classless ip.
+- এই চার্টে `127.0.0.0` সিরিজের ip address মিসিং আছে। এক হিসেবে দেখা যায়, এইটাও কিন্তু A Class এর default subnet mask ব্যবহার করে। এই ধরণের ip address গুলো network device এ ব্যবহার করা হয়ে থাকে। এদেরকে বলে, loopback addresses. network টেস্টিং এর কাজে এই loopback address ব্যবহার করা হয়ে থাকে।
 
 IANA(Internet Assigned Numbers Authority) is the authority that gives/assigns IP addresses.
